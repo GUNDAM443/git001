@@ -31,7 +31,8 @@
     delete from bas_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.shsxt.xmjf.api.po.BasUser" >
+  <insert id="insert" parameterType="com.shsxt.xmjf.api.po.BasUser" useGeneratedKeys="true"
+  keyProperty="id">
     insert into bas_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

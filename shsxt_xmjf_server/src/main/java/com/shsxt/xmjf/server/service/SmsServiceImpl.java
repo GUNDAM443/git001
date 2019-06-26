@@ -48,6 +48,8 @@ public class SmsServiceImpl implements ISmsService {
         String code= RandomCodesUtils.createRandom(true,4);
         if(type== XmjfConstant.SMS_LOGIN_TYPE){
             doSendSms(phone,type,code,XmjfConstant.XMJF_LOGIN_TEMPLATEID);
+        }else if (type== XmjfConstant.SMS_REGISTER_SUCCESS_NOTIFY_TYPE){
+            doSendSms(phone,type,phone,XmjfConstant.SMS_REGISTER_SUCCESS_NOTIFY_TEMPLATE_CODE);
         }else if(type== XmjfConstant.SMS_REGISTER_TYPE){
             AssertUtil.isTrue(null != (userService.queryBasUserByPhone(phone)),"该手机号已注册!");
             doSendSms(phone,type,code,XmjfConstant.XMJF_REGISTER_TEMPLATEID);
@@ -58,11 +60,13 @@ public class SmsServiceImpl implements ISmsService {
 
     }
 
+
+
     private void checkParams(String phone, Integer type) {
         AssertUtil.isTrue(StringUtils.isBlank(phone),"手机号不能为空!");
         AssertUtil.isTrue(!(PhoneUtil.checkPhone(phone)),"手机号格式非法!");
         AssertUtil.isTrue(null==type,"短信类型不能为空!");
-        AssertUtil.isTrue(!(type== XmjfConstant.SMS_LOGIN_TYPE||type== XmjfConstant.SMS_REGISTER_TYPE),"短信类型不合法!");
+        AssertUtil.isTrue(!(type== XmjfConstant.SMS_LOGIN_TYPE||type== XmjfConstant.SMS_REGISTER_TYPE||type==XmjfConstant.SMS_REGISTER_SUCCESS_NOTIFY_TYPE),"短信类型不合法!");
     }
 
 

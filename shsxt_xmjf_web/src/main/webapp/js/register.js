@@ -55,4 +55,50 @@ $(function () {
         });
 
     })
+
+    /*点击注册按钮时校验*/
+    $("#register").click(function () {
+        var phone=$("#phone").val();
+        var code=$("#verification").val();
+        var password=$("#password").val();
+        if(isEmpty(phone)){
+            layer.tips("请输入手机号码!","#phone");
+            return;
+        }
+        if(isEmpty(code)){
+            layer.tips("请输入手机短信验证码!","#verification");
+            return;
+        }
+
+        if(isEmpty(password)){
+            layer.tips("请输入密码!","#password");
+            return;
+        }
+
+        $.ajax({
+            type:"post",
+            url:ctx+"/user/saveUser",
+            data:{
+                phone:phone,
+                code:code,
+                password:password
+            },
+            dataType:"json",
+            success:function (data) {
+                if(data.code==200){
+                    layer.msg('注册成功');
+                    setTimeout(function () {
+                        window.location.href=ctx+"/login";
+                    },2000)
+                }else{
+                    layer.tips(data.msg,"#register");
+                }
+            }
+        })
+
+
+
+
+    })
+
 });

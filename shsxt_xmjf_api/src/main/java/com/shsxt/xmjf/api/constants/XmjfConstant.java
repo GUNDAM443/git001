@@ -15,9 +15,11 @@ public class XmjfConstant {
     public static final String TENCENT_APPKEY = "4ea625ac9acedc43c89da4e9ca30dea8";
     public static final Integer XMJF_REGISTER_TEMPLATEID = 306943;
     public static final Integer XMJF_LOGIN_TEMPLATEID = 310511;
+    public static final Integer SMS_REGISTER_SUCCESS_NOTIFY_TEMPLATE_CODE=316725;
 
     public static final String XMJF_SMSSIGN="欢乐发电厂";
     public static final Integer SMS_LOGIN_TYPE=1;
     public static final Integer SMS_REGISTER_TYPE=2;
+    public static final Integer SMS_REGISTER_SUCCESS_NOTIFY_TYPE=3;// 注册成功通知类型
 
 }
