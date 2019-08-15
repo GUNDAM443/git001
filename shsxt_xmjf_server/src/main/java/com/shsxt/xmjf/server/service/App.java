@@ -7,4 +7,5 @@ package com.shsxt.xmjf.server.service;
 public class App {
     int a=1;
     int c=3;
+    int b=2;
 }
