@@ -10,12 +10,19 @@ $(function () {
         var phone = $("#phone").val();
         var imageCode = $("#code").val();
         if (isEmpty(phone)) {
-            alert("手机号不能为空!");
+            /*alert("手机号不能为空!");*/
+            layer.tips('手机号不能为空', '#phone',{
+                tips: [4, '#78BA32']
+            });
             return;
         }
 
         if (isEmpty(imageCode)) {
-            alert("请输入图片验证码!");
+            /*alert("请输入图片验证码!");*/
+            /*layer.tips('请输入图片验证码', '#code');*/
+            layer.tips('请输入图片验证码', '#code', {
+                tips: [4, '#78BA32']
+            });
             return;
         }
         //ajax发送数据到后台
@@ -48,7 +55,7 @@ $(function () {
                     }, 1000);//定时器时间间隔为1s
 
                 } else {
-                    alert(data.msg);
+                    alert(data.msg);//这个就是返回结果集里面的msg
                     $(".validImg").attr("src", ctx + "/image?time=" + new Date());//请求不成功时  更换图片验证码
                 }
             }
@@ -81,7 +88,8 @@ $(function () {
             data:{
                 phone:phone,
                 code:code,
-                password:password
+                password:password,
+                type: 2,
             },
             dataType:"json",
             success:function (data) {
@@ -100,5 +108,6 @@ $(function () {
 
 
     })
+
 
 });

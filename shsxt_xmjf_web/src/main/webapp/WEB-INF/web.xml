@@ -29,6 +29,7 @@
       <param-name>contextConfigLocation</param-name>
       <param-value>classpath:servlet-context.xml</param-value>
     </init-param>
+    <!--容器启动时及实例化,加快加载速度-->
     <load-on-startup>1</load-on-startup>
   </servlet>
 

@@ -34,6 +34,7 @@ public class ImageController {
         response.setContentType("image/jpeg");
         String code=producer.createText();
         System.out.println("图片验证码:"+code);
+        //验证码存session以备和前台传来的对比,如果参数传入httpSession,那这边就不用用request获取session
         request.getSession().setAttribute("image",code);
         request.setAttribute("ctx",request.getContextPath());
         BufferedImage image=producer.createImage(code);
